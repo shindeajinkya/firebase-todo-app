@@ -12,12 +12,12 @@ function TodoView() {
     const theme = useContext(ThemeContext)
 
     const updateFirebase = async (todos) => {
+        setTodos(todos)
         await db.collection('users')
         .doc(`${app.auth().currentUser.uid}`)
         .set({
             todos: todos
         })
-        .then(() => setTodos(todos))
         .catch(err => console.log(err))
     }
 
@@ -102,7 +102,7 @@ function TodoView() {
                                             : <IoIosCheckmarkCircleOutline className='todo-icons' size={40} />
                                         }
                                     </label>
-                                    <p>{todo.task}</p>
+                                    <p className={`todo-${todo.isComplete}`}>{todo.task}</p>
                                 </div>
                                 <button className='todo-delete' onClick={() => deleteTodo(todo.date)} >
                                     <IoMdTrash size={40} className='todo-icons' />

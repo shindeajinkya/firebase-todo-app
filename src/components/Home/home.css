@@ -108,6 +108,11 @@
     margin-left: 32px;
 }
 
+.todo-true {
+    text-decoration: line-through;
+    color: #D543ED;
+}
+
 .check-group {
     cursor: pointer;
 }

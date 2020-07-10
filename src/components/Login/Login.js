@@ -18,7 +18,10 @@ function Login({history}) {
             .auth()
             .signInWithEmailAndPassword(email.value, password.value)
             .then(res => history.push('/'))
-            .catch(err => alert('email or password maybe wrong.'))
+            .catch(err => {
+                alert('email or password maybe wrong.')
+                console.log(err)
+            })
     }, [history])
 
     const validator = () => {
